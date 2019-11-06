@@ -1,0 +1,197 @@
+{
+  "processName": {
+    "id": "Process_00vams5",
+    "name": "BPMN API Vacation Process"
+  },
+  "events": [
+    {
+      "type": "StartEvent",
+      "id": "StartEvent_1g26bmn",
+      "name": "Vacation Request Start Event",
+      "formKey": "VacationRequest",
+      "forms": [
+        {
+          "id": "Vacation Request Name",
+          "type": "string",
+          "label": "Vacation Request Name"
+        },
+        {
+          "id": "Vacation Request Reason",
+          "type": "string",
+          "label": "Vacation Request Reason"
+        },
+        {
+          "id": "Vacation Request Date",
+          "type": "date",
+          "label": "Vacation Request Date"
+        }
+      ],
+      "outgoing": [
+        "SequenceFlow_08ascbi"
+      ]
+    },
+    {
+      "type": "EndEvent",
+      "id": "EndEvent_0oe2hgw",
+      "name": "Vacation Request End Event",
+      "incoming": [
+        "SequenceFlow_1p7j4p1"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "type": "userTask",
+      "id": "userTask_f62450cb-9a75-4206-b612-9f3111e214f7",
+      "name": "Approve Vacation Request Task",
+      "assigneTaskToAssignee": "Admin",
+      "userTaskFormKey": "User Task Forms",
+      "forms": [
+        {
+          "id": "Vacation Request Name",
+          "type": "string",
+          "label": "Vacation Request Name"
+        },
+        {
+          "id": "Vacation Request Reason",
+          "type": "string",
+          "label": "Vacation Request Reason"
+        },
+        {
+          "id": "Vacation Request Date",
+          "type": "date",
+          "label": "Vacation Request Date"
+        }
+      ],
+      "incoming": [
+        "SequenceFlow_08ascbi"
+      ],
+      "outgoing": [
+        "SequenceFlow_0bzrkej"
+      ]
+    },
+    {
+      "type": "userTask",
+      "id": "userTask_Task_1wh80eb",
+      "name": "Change Vacation Plans",
+      "assigneTaskToAssignee": "Admin",
+      "userTaskFormKey": "User Task Forms",
+      "forms": [
+        {
+          "id": "Vacation Request Name",
+          "type": "string",
+          "label": "Vacation Request Name"
+        },
+        {
+          "id": "Vacation Request Reason",
+          "type": "string",
+          "label": "Vacation Request Reason"
+        },
+        {
+          "id": "Vacation Request Date",
+          "type": "date",
+          "label": "Vacation Request Date"
+        }
+      ],
+      "incoming": [
+        "SequenceFlow_08uduc2"
+      ],
+      "outgoing": [
+        "SequenceFlow_107cw32"
+      ]
+    },
+    {
+      "type": "userTask",
+      "id": "Task_0ah91xl",
+      "name": "Plan Vacation",
+      "assigneTaskToAssignee": "Admin",
+      "userTaskFormKey": "User Task Forms",
+      "forms": [
+        {
+          "id": "Vacation Request Name",
+          "type": "string",
+          "label": "Vacation Request Name"
+        },
+        {
+          "id": "Vacation Request Reason",
+          "type": "string",
+          "label": "Vacation Request Reason"
+        },
+        {
+          "id": "Vacation Request date",
+          "type": "date",
+          "label": "Vacation Request Date"
+        }
+      ],
+      "incoming": [
+        "SequenceFlow_0fq06kb"
+      ],
+      "outgoing": [
+        "SequenceFlow_1aq311u"
+      ]
+    }
+  ],
+  "sequenceFlow": [
+    {
+      "id": "SequenceFlow_08uduc2",
+      "name": "Approve",
+      "sourceRef": "ExclusiveGateway_0m461bk",
+      "targetRef": "Task_0ah91xl"
+    },
+    {
+      "id": "SequenceFlow_0fq06kb",
+      "name": "Reject",
+      "sourceRef": "ExclusiveGateway_0m461bk",
+      "targetRef": "Task_1wh80eb"
+    },
+    {
+      "id": "SequenceFlow_0bzrkej",
+      "sourceRef": "userTask_f62450cb-9a75-4206-b612-9f3111e214f7",
+      "targetRef": "ExclusiveGateway_0m461bk"
+    },
+    {
+      "id": "SequenceFlow_107cw32",
+      "sourceRef": "Task_1wh80eb",
+      "targetRef": "ExclusiveGateway_0oq6m67"
+    },
+    {
+      "id": "SequenceFlow_1aq311u",
+      "sourceRef": "Task_0ah91xl",
+      "targetRef": "ExclusiveGateway_0oq6m67"
+    },
+    {
+      "id": "SequenceFlow_1p7j4p1",
+      "sourceRef": "ExclusiveGateway_0oq6m67",
+      "targetRef": "EndEvent_0oe2hgw"
+    },
+    {
+      "id": "SequenceFlow_08ascbi",
+      "sourceRef": "StartEvent_1g26bmn",
+      "targetRef": "userTask_f62450cb-9a75-4206-b612-9f3111e214f7"
+    }
+  ],
+  "gateway": [
+    {
+      "type": "Exclusive Gateway",
+      "id": "ExclusiveGateway_0m461bk",
+      "incoming": [
+        "SequenceFlow_0bzrkej"
+      ],
+      "outgoing": [
+        "SequenceFlow_08uduc2",
+        "SequenceFlow_0fq06kb"
+      ]
+    },
+    {
+      "type": "Exclusive Gateway",
+      "id": "ExclusiveGateway_0oq6m67",
+      "incoming": [
+        "SequenceFlow_1aq311u",
+        "SequenceFlow_1aq311u"
+      ],
+      "outgoing": [
+        "SequenceFlow_1p7j4p1"
+      ]
+    }
+  ]
+}

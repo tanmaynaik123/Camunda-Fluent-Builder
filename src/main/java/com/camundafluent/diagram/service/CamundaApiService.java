@@ -35,12 +35,15 @@ public class CamundaApiService implements ICamundaApi{
 				.name(schemaForDiagramBean.getProcessName().getName());
 		StartEventBuilder startEventBuilder =processBuilder.startEvent().id(schemaForDiagramBean.getStartEvent().getId())
 				.name(schemaForDiagramBean.getStartEvent().getName());
+		
+		
 
 		if(!schemaForDiagramBean.getStartEvent().getForms().isEmpty()) {
 			schemaForDiagramBean.getStartEvent().getForms().forEach(formsList->{
 				startEventBuilder.camundaFormField().camundaId(formsList.getId())
 				.camundaType(formsList.getType())
-				.camundaLabel(formsList.getLabel());
+				.camundaLabel(formsList.getLabel())
+				;
 			});
 		}
 		else {
