@@ -136,13 +136,13 @@
       "id": "SequenceFlow_08uduc2",
       "name": "Approve",
       "sourceRef": "ExclusiveGateway_0m461bk",
-      "targetRef": "Task_0ah91xl"
+      "targetRef": "userTask_0ah91xl"
     },
     {
       "id": "SequenceFlow_0fq06kb",
       "name": "Reject",
       "sourceRef": "ExclusiveGateway_0m461bk",
-      "targetRef": "Task_1wh80eb"
+      "targetRef": "userTask_wh80eb"
     },
     {
       "id": "SequenceFlow_0bzrkej",
@@ -151,12 +151,12 @@
     },
     {
       "id": "SequenceFlow_107cw32",
-      "sourceRef": "Task_1wh80eb",
+      "sourceRef": "userTask_1wh80eb",
       "targetRef": "ExclusiveGateway_0oq6m67"
     },
     {
       "id": "SequenceFlow_1aq311u",
-      "sourceRef": "Task_0ah91xl",
+      "sourceRef": "userTask_0ah91xl",
       "targetRef": "ExclusiveGateway_0oq6m67"
     },
     {
@@ -168,10 +168,6 @@
       "id": "SequenceFlow_08ascbi",
       "sourceRef": "StartEvent_1g26bmn",
       "targetRef": "userTask_f62450cb-9a75-4206-b612-9f3111e214f7"
-    },
-    {
-      "id": "SequenceFlow_1p7j4p1",
-      "sourceRef": "EndEvent_0oe2hgw"
     }
   ],
   "gateway": [
