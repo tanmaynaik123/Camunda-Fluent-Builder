@@ -168,11 +168,15 @@
       "id": "SequenceFlow_08ascbi",
       "sourceRef": "StartEvent_1g26bmn",
       "targetRef": "userTask_f62450cb-9a75-4206-b612-9f3111e214f7"
+    },
+    {
+      "id": "SequenceFlow_1p7j4p1",
+      "sourceRef": "EndEvent_0oe2hgw"
     }
   ],
   "gateway": [
     {
-      "type": "Exclusive Gateway",
+      "type": "ExclusiveGateway",
       "id": "ExclusiveGateway_0m461bk",
       "incoming": [
         "SequenceFlow_0bzrkej"
@@ -183,7 +187,7 @@
       ]
     },
     {
-      "type": "Exclusive Gateway",
+      "type": "ExclusiveGateway",
       "id": "ExclusiveGateway_0oq6m67",
       "incoming": [
         "SequenceFlow_1aq311u",
